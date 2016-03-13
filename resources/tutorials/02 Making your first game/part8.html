@@ -31,6 +31,9 @@ var cursors;
 
 var stars;
 
+var score = 0;
+var scoreText;
+
 function create() {
 
     //  We're going to be using physics, so enable the Arcade Physics system
@@ -97,6 +100,9 @@ function create() {
 
     //  Our controls.
     cursors = game.input.keyboard.createCursorKeys();
+
+    // Create scoreText
+    scoreText = game.add.text(16,16,"score:0",{fontSize: "32px", fill: "#000"});
     
 }
 
@@ -146,6 +152,10 @@ function collectStar (player, star) {
     
     // Removes the star from the screen
     star.kill();
+
+    // Add and update the score
+    score += 10;
+    scoreText.text = `Score: ${score}`;
 
 }
 
